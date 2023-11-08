@@ -30,7 +30,6 @@ public class Main {
 
                 switch (op) {
                     case 1:
-
                         System.out.println("Digite o numero do CEP:");
                         cepNumero = sc.nextInt();
 
@@ -40,7 +39,6 @@ public class Main {
                             throw new CepInvalidoException("Cep já está cadastrado.");
                         }
                         break;
-
                     case 2:
                         System.out.println(service.listar());
                         break;
@@ -48,7 +46,7 @@ public class Main {
                         System.out.println("Digite o numero do CEP:");
                         cepNumero = sc.nextInt();
                         if(service.checkExiste(cepNumero)) {
-                            service.obterPeloNumero(cepNumero);
+                            System.out.println(service.obterPeloNumero(cepNumero));
                         }else{
                             throw new CepInvalidoException("CEP não encontrado no sistema.");
                         }
