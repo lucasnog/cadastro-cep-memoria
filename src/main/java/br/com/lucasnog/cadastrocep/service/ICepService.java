@@ -7,10 +7,9 @@ import java.util.Map;
 import java.util.Optional;
 
 public interface ICepService {
-    void cadastrar(Integer cep);
+    void cadastrar(Cep cep) throws CepInvalidoException;
     Map<Integer,Cep> listar();
-    Optional<Cep> obterPeloNumero(Integer cep);
-    void atualizarPeloNumero(Integer cep, Integer op);
-    void deletar(Integer cep);
-    boolean checkExiste(Integer cep) throws CepInvalidoException;
+    Optional<Cep> obterPeloNumero(Integer cep) throws CepInvalidoException;
+    void atualizarPeloNumero(Integer cep, Integer op,String novo) throws CepInvalidoException;
+    void deletar(Integer cep) throws CepInvalidoException;
 }
