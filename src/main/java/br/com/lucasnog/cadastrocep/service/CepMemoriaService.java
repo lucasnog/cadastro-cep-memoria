@@ -21,7 +21,6 @@ public class CepMemoriaService implements ICepService {
 
     @Override
     public Map<Integer, Cep> listar() {
-        System.out.println("Os CEPs cadastrados são:");
         return listaCep;
     }
 

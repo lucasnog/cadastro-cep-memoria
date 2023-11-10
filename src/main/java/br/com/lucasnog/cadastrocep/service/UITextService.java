@@ -3,15 +3,17 @@ package br.com.lucasnog.cadastrocep.service;
 import br.com.lucasnog.cadastrocep.domain.Cep;
 import br.com.lucasnog.cadastrocep.exception.CepInvalidoException;
 
+import java.util.Map;
 import java.util.Scanner;
 
-public class UIService {
+public class UITextService implements IUIService {
     String rua, cidade, estado;
     Integer cepNumero;
     Scanner sc = new Scanner(System.in);
 
 
     public Integer menuPrincipal(){
+        System.out.println("- Sistema de cadastro de CEP -");
         System.out.println("Escolha uma opção:");
         System.out.println("1 - Cadastrar novo CEP");
         System.out.println("2 - Listar todos os CEPs");
@@ -27,15 +29,13 @@ public class UIService {
 
     public Cep cadastro() throws CepInvalidoException {
 
-        System.out.println("Digite o numero do CEP:");
-        cepNumero = sc.nextInt();
-        sc.nextLine();
+        cepNumero = this.entradaCep();
 
 
         if (cepNumero.toString().length() != 8) {
             throw new CepInvalidoException("Número de digitos inválido.");
         }
-
+        sc.nextLine();
         System.out.println("Digite o nome da rua:");
         rua = sc.nextLine();
 
@@ -67,5 +67,10 @@ public class UIService {
     public String novoNome(){
         System.out.println("Alterar para:");
         return sc.next();
+    }
+
+    @Override
+    public <T> void exibir(T msg) {
+        System.out.println(msg.toString());
     }
 }
