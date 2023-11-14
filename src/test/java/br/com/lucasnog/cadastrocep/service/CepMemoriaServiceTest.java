@@ -22,19 +22,18 @@ public class CepMemoriaServiceTest {
         String resultado = cepService.cadastrar(cep);
 
         // Verifica se a mensagem de sucesso está correta
-        assertEquals(cepTest + " cadastrado com sucesso", resultado);
+        assertEquals(cepTest.toString() + " cadastrado com sucesso", resultado);
 
     }
 
     @Test
-    public void testCadastrarCepExistente() {
+    public void testCadastrarCepExistente() throws Exception {
 
         CepMemoriaService cepService = new CepMemoriaService();
         Cep cep = new Cep(74915430, "Rua Teste", "Cidade Teste", "Estado Teste");
 
         // Adiciona o Cep manualmente à lista interna
-        cepService.listar().put(74915430, cep);
-
+        cepService.cadastrar(cep);
         // Tenta cadastrar o mesmo Cep novamente e verifica se a exceção é lançada
         assertThrows(CepInvalidoException.class, () -> cepService.cadastrar(cep));
     }
