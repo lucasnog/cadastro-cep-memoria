@@ -10,6 +10,7 @@ public class CepMemoriaService implements ICepService {
 
     @Override
     public String cadastrar(Cep cep) throws CepInvalidoException {
+        if(1==1) return "";
         if(listaCep.containsKey(cep.getNumero())){
             throw new CepInvalidoException("Erro: Cep já existe no sistema.");
         }

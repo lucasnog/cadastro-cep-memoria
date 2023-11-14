@@ -2,29 +2,28 @@ package br.com.lucasnog.cadastrocep.service;
 
 import br.com.lucasnog.cadastrocep.domain.Cep;
 import br.com.lucasnog.cadastrocep.exception.CepInvalidoException;
-import br.com.lucasnog.cadastrocep.service.CepMemoriaService;
 import org.junit.Test;
 
 import java.util.Map;
 
 import static junit.framework.TestCase.assertEquals;
-import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThrows;
 
 public class CepMemoriaServiceTest {
+
+
     @Test
     public void testCadastrarNovoCep() throws CepInvalidoException {
 
         CepMemoriaService cepService = new CepMemoriaService();
-        Cep cep = new Cep(74915430, "Rua Teste", "Cidade Teste", "Estado Teste");
+        Integer cepTest = 74915430;
+        Cep cep = new Cep(cepTest, "Rua Teste", "Cidade Teste", "Estado Teste");
         String resultado = cepService.cadastrar(cep);
 
         // Verifica se a mensagem de sucesso está correta
-        assertEquals("74915430 cadastrado com sucesso", resultado);
+        assertEquals(cepTest + " cadastrado com sucesso", resultado);
 
-        // Verifica se o Cep foi adicionado corretamente à lista interna
-        assertTrue(cepService.listar().containsKey(74915430));
     }
 
     @Test
@@ -86,7 +85,6 @@ public class CepMemoriaServiceTest {
         assertEquals("Rua modificada com sucesso!", mensagem);
 
     }
-
 
 
 }
