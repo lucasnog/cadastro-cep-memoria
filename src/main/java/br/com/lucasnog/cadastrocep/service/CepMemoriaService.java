@@ -1,8 +1,11 @@
 package br.com.lucasnog.cadastrocep.service;
+
 import br.com.lucasnog.cadastrocep.domain.Cep;
 import br.com.lucasnog.cadastrocep.exception.CepInvalidoException;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
 
 public class CepMemoriaService implements ICepService {
     private Map<Integer, Cep> listaCep = new HashMap<>();
@@ -10,8 +13,7 @@ public class CepMemoriaService implements ICepService {
 
     @Override
     public String cadastrar(Cep cep) throws CepInvalidoException {
-        if(1==1) return "";
-        if(listaCep.containsKey(cep.getNumero())){
+        if (listaCep.containsKey(cep.getNumero())) {
             throw new CepInvalidoException("Erro: Cep já existe no sistema.");
         }
 
@@ -28,16 +30,16 @@ public class CepMemoriaService implements ICepService {
 
     @Override
     public Optional<Cep> obterPeloNumero(Integer cep) throws CepInvalidoException {
-        if(listaCep.containsKey(cep)) {
+        if (listaCep.containsKey(cep)) {
             return Optional.ofNullable(listaCep.get(cep));
-        }else{
+        } else {
             throw new CepInvalidoException("CEP não encontrado no sistema.");
         }
     }
 
     @Override
-    public String atualizarPeloNumero(Integer cep, Integer op, String novo ) throws CepInvalidoException {
-        if (!listaCep.containsKey(cep)){
+    public String atualizarPeloNumero(Integer cep, Integer op, String novo) throws CepInvalidoException {
+        if (!listaCep.containsKey(cep)) {
             throw new CepInvalidoException("CEP não encontrado no sistema.");
         }
         switch (op) {
@@ -59,11 +61,11 @@ public class CepMemoriaService implements ICepService {
     }
 
     @Override
-    public String deletar(Integer cep) throws CepInvalidoException{
-        if(listaCep.containsKey(cep)) {
+    public String deletar(Integer cep) throws CepInvalidoException {
+        if (listaCep.containsKey(cep)) {
             listaCep.remove(cep);
             return "Cep " + cep + " removido com sucesso.";
-        }else{
+        } else {
             throw new CepInvalidoException("CEP não encontrado no sistema.");
         }
     }
