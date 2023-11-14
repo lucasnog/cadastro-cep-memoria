@@ -46,6 +46,7 @@ public class UIGraficService implements IUIService {
 
     @Override
     public Integer entradaCep() {
+
         return this.convertToInt(JOptionPane.showInputDialog("Digite o numero do CEP:"));
     }
 
