@@ -3,10 +3,9 @@ package br.com.lucasnog.cadastrocep.service;
 import br.com.lucasnog.cadastrocep.domain.Cep;
 import br.com.lucasnog.cadastrocep.exception.CepInvalidoException;
 
-import java.util.Map;
 import java.util.Scanner;
 
-public class UITextService implements IUIService {
+public class UIConsoleService implements IUIService {
     String rua, cidade, estado;
     Integer cepNumero;
     Scanner sc = new Scanner(System.in);
@@ -44,7 +43,7 @@ public class UITextService implements IUIService {
 
         System.out.println("Digite o nome do estado:");
         estado = sc.nextLine();
-
+        System.out.println("CEP Cadastrado com sucesso.");
         return new Cep(cepNumero, rua, cidade, estado);
     }
 

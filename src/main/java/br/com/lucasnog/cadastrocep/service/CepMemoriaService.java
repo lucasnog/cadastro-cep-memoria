@@ -5,18 +5,19 @@ import br.com.lucasnog.cadastrocep.exception.CepInvalidoException;
 import java.util.*;
 
 public class CepMemoriaService implements ICepService {
-    Map<Integer, Cep> listaCep = new HashMap<>();
+    private Map<Integer, Cep> listaCep = new HashMap<>();
 
 
     @Override
-    public void cadastrar(Cep cep) throws CepInvalidoException {
+    public String cadastrar(Cep cep) throws CepInvalidoException {
         if(listaCep.containsKey(cep.getNumero())){
             throw new CepInvalidoException("Erro: Cep já existe no sistema.");
         }
 
         Cep cepObj = new Cep(cep.getNumero(), cep.getRua(), cep.getCidade(), cep.getEstado());
         listaCep.put(cepObj.getNumero(), cepObj);
-        System.out.println("CEP Cadastrado com sucesso.");
+        return cepObj.getNumero().toString() + " cadastrado com sucesso";
+
     }
 
     @Override
@@ -34,33 +35,33 @@ public class CepMemoriaService implements ICepService {
     }
 
     @Override
-    public void atualizarPeloNumero(Integer cep, Integer op, String novo ) throws CepInvalidoException {
+    public String atualizarPeloNumero(Integer cep, Integer op, String novo ) throws CepInvalidoException {
         if (!listaCep.containsKey(cep)){
             throw new CepInvalidoException("CEP não encontrado no sistema.");
         }
         switch (op) {
             case 1:
                 listaCep.get(cep).setRua(novo);
-                System.out.println("Modificado com sucesso!");
-                break;
+                return "Rua modificada com sucesso!";
+
             case 2:
                 listaCep.get(cep).setCidade(novo);
-                System.out.println("Modificado com sucesso!");
-                break;
+                return "Cidade modificada com sucesso!";
+
             case 3:
                 listaCep.get(cep).setEstado(novo);
-                System.out.println("Modificado com sucesso!");
-                break;
+                return "Estado modificado com sucesso!";
+
             default:
-                System.out.println("Opção invalida.");
+                return "Opção invalida";
         }
     }
 
     @Override
-    public void deletar(Integer cep) throws CepInvalidoException{
+    public String deletar(Integer cep) throws CepInvalidoException{
         if(listaCep.containsKey(cep)) {
-            System.out.println("Cep " + cep + " foi removido com sucesso.");
             listaCep.remove(cep);
+            return "Cep " + cep + " removido com sucesso.";
         }else{
             throw new CepInvalidoException("CEP não encontrado no sistema.");
         }

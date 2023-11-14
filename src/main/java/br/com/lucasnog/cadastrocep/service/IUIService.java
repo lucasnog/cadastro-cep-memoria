@@ -3,15 +3,13 @@ package br.com.lucasnog.cadastrocep.service;
 import br.com.lucasnog.cadastrocep.domain.Cep;
 import br.com.lucasnog.cadastrocep.exception.CepInvalidoException;
 
-import java.util.Map;
-
 public interface IUIService {
-    public Integer menuPrincipal();
-    public Cep cadastro() throws CepInvalidoException;
-    public Integer entradaCep();
-    public Integer opcaoModificar();
+     Integer menuPrincipal();
+     Cep cadastro() throws CepInvalidoException;
+     Integer entradaCep();
+     Integer opcaoModificar();
 
-    public String novoNome();
+     String novoNome();
 
-    public <T> void exibir(T msg);
+     <T> void exibir(T msg);
 }

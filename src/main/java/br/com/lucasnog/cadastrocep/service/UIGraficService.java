@@ -4,14 +4,9 @@ import br.com.lucasnog.cadastrocep.domain.Cep;
 import br.com.lucasnog.cadastrocep.exception.CepInvalidoException;
 
 import javax.swing.*;
-import java.util.Map;
-import java.util.Scanner;
 
 public class UIGraficService implements IUIService {
-    String rua, cidade, estado;
     Integer cepNumero;
-    Scanner sc = new Scanner(System.in);
-
 
     private int convertToInt(String input) {
         return Integer.parseInt(input);
@@ -58,9 +53,9 @@ public class UIGraficService implements IUIService {
     public Integer opcaoModificar() {
         return this.convertToInt(JOptionPane.showInputDialog(
                 "O que deseja alterar?\n" +
-                "1 - rua"+
-                "2 - cidade"+
-                "3 - estado"));
+                        "1 - rua\n" +
+                        "2 - cidade\n" +
+                        "3 - estado\n"));
     }
 
     @Override
