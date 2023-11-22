@@ -1,4 +1,4 @@
-package br.com.lucasnog.cadastrocep.service;
+package br.com.lucasnog.cadastrocep.service.userinterface;
 
 import br.com.lucasnog.cadastrocep.domain.Cep;
 import br.com.lucasnog.cadastrocep.exception.CepInvalidoException;
@@ -11,8 +11,7 @@ public class UIConsoleService implements IUIService {
     Scanner sc = new Scanner(System.in);
 
 
-    public Integer menuPrincipal(){
-        System.out.println("- Sistema de cadastro de CEP -");
+    public Integer menuPrincipal() {
         System.out.println("Escolha uma opção:");
         System.out.println("1 - Cadastrar novo CEP");
         System.out.println("2 - Listar todos os CEPs");
@@ -20,7 +19,6 @@ public class UIConsoleService implements IUIService {
         System.out.println("4 - Modificar CEP");
         System.out.println("5 - Excluir CEP");
         System.out.println("6 - Sair");
-
 
 
         return sc.nextInt();
@@ -47,14 +45,13 @@ public class UIConsoleService implements IUIService {
         return new Cep(cepNumero, rua, cidade, estado);
     }
 
-    public Integer entradaCep(){
+    public Integer entradaCep() {
         System.out.println("Digite o numero do CEP:");
-        return  sc.nextInt();
+        return sc.nextInt();
     }
 
 
-
-    public Integer opcaoModificar(){
+    public Integer opcaoModificar() {
         System.out.println("O que deseja alterar?");
         System.out.println("1 - rua");
         System.out.println("2 - cidade");
@@ -63,7 +60,7 @@ public class UIConsoleService implements IUIService {
         return sc.nextInt();
     }
 
-    public String novoNome(){
+    public String novoNome() {
         System.out.println("Alterar para:");
         return sc.next();
     }

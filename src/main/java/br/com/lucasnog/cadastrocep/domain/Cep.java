@@ -1,5 +1,6 @@
 package br.com.lucasnog.cadastrocep.domain;
 
+import java.util.Objects;
 public class Cep {
 
     private Integer numero;
@@ -16,8 +17,9 @@ public class Cep {
 
     @Override
     public String toString() {
-        return  " { rua='" + rua + '\'' +
+        return " { rua='" + rua + '\'' +
                 ", cidade='" + cidade + '\'' +
+                ", numero='" + numero + '\'' +
                 ", estado='" + estado + '\'' +
                 '}';
     }
@@ -25,7 +27,7 @@ public class Cep {
     public Integer getNumero() {
         return numero;
     }
-    
+
     public String getRua() {
         return rua;
     }
@@ -48,5 +50,18 @@ public class Cep {
 
     public void setEstado(String estado) {
         this.estado = estado;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cep cep = (Cep) o;
+        return Objects.equals(numero, cep.numero) && Objects.equals(rua, cep.rua) && Objects.equals(cidade, cep.cidade) && Objects.equals(estado, cep.estado);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(numero, rua, cidade, estado);
     }
 }

@@ -1,17 +1,21 @@
 package br.com.lucasnog.cadastrocep;
 
 import br.com.lucasnog.cadastrocep.exception.CepInvalidoException;
-import br.com.lucasnog.cadastrocep.service.*;
+import br.com.lucasnog.cadastrocep.service.implementation.ICepService;
+import br.com.lucasnog.cadastrocep.service.userinterface.IUIService;
+import br.com.lucasnog.cadastrocep.service.userinterface.UISelectService;
+import br.com.lucasnog.cadastrocep.service.implementation.CepMemoriaListLambdaService;
+
 
 public class Main {
-    public static void main(String[] args){
+    public static void main(String[] args) {
 
-        ICepService service = new CepMemoriaService();
+        ICepService service = new CepMemoriaListLambdaService();
         boolean continuar = true;
         IUIService userService = UISelectService.selectMode();
 
-        do{
-            try{
+        do {
+            try {
                 switch (userService.menuPrincipal()) {
                     case 1:
                         userService.exibir(service.cadastrar(userService.cadastro()));
@@ -34,11 +38,11 @@ public class Main {
                         break;
                     default:
                         userService.exibir("Digite uma opção valida.");
-                 }
-            }catch (CepInvalidoException e){
+                }
+            } catch (CepInvalidoException e) {
                 userService.exibir(e.getMessage());
             }
 
-        }while(continuar);
+        } while (continuar);
     }
 }

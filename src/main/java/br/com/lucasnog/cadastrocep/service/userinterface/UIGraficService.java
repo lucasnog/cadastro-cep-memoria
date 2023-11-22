@@ -1,10 +1,8 @@
-package br.com.lucasnog.cadastrocep.service;
+package br.com.lucasnog.cadastrocep.service.userinterface;
 
 import br.com.lucasnog.cadastrocep.domain.Cep;
 import br.com.lucasnog.cadastrocep.exception.CepInvalidoException;
-
 import javax.swing.*;
-
 public class UIGraficService implements IUIService {
     Integer cepNumero;
 
@@ -14,7 +12,6 @@ public class UIGraficService implements IUIService {
 
     public Integer menuPrincipal() {
         String op = JOptionPane.showInputDialog(
-                "- Sistema de cadastro de CEP -" +
                 "Escolha uma opção:\n" +
                         "1 - Cadastrar novo CEP\n" +
                         "2 - Listar todos os CEPs\n" +

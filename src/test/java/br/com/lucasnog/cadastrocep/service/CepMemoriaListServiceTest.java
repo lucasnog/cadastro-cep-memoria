@@ -2,29 +2,28 @@ package br.com.lucasnog.cadastrocep.service;
 
 import br.com.lucasnog.cadastrocep.domain.Cep;
 import br.com.lucasnog.cadastrocep.exception.CepInvalidoException;
-import br.com.lucasnog.cadastrocep.service.implementation.CepMemoriaService;
+import br.com.lucasnog.cadastrocep.service.implementation.CepMemoriaListService;
 import org.junit.Test;
 
-import java.util.Map;
+import java.util.List;
 import java.util.Optional;
 
 import static junit.framework.TestCase.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThrows;
 
-public class CepMemoriaServiceTest {
+public class CepMemoriaListServiceTest {
 
 
     @Test
     public void testCadastrar() throws CepInvalidoException {
 
-        CepMemoriaService cepService = new CepMemoriaService();
+        CepMemoriaListService cepService = new CepMemoriaListService();
         Integer cepTest = 74915430;
         Cep cep = new Cep(cepTest, "Rua Teste", "Cidade Teste", "Estado Teste");
         String resultado = cepService.cadastrar(cep);
 
-        assertEquals(cepTest.toString() + " cadastrado com sucesso", resultado);
-
+        assertEquals(cepTest + " cadastrado com sucesso", resultado);
 
         assertThrows(CepInvalidoException.class, () -> cepService.cadastrar(cep));
     }
@@ -33,12 +32,13 @@ public class CepMemoriaServiceTest {
     @Test
     public void testObterPeloNumero() throws CepInvalidoException {
 
-        CepMemoriaService cepService = new CepMemoriaService();
+        CepMemoriaListService cepService = new CepMemoriaListService();
         Cep cepTeste = new Cep(74915430, "teste", "teste", "teste");
         cepService.cadastrar(cepTeste);
 
         Optional<Cep> teste = cepService.obterPeloNumero(74915430);
-        assertEquals((Optional.ofNullable(cepTeste)), teste);
+        assertEquals((Optional.of(cepTeste)), teste);
+
 
         Integer cepNaoExistente = 87654321;
 
@@ -49,10 +49,9 @@ public class CepMemoriaServiceTest {
 
     @Test
     public void testListar() {
-        CepMemoriaService cepService = new CepMemoriaService();
+        CepMemoriaListService cepService = new CepMemoriaListService();
 
-
-        Map<Integer, Cep> resultado = cepService.listar();
+        List<Cep> resultado = cepService.listar();
 
         assertNotNull(resultado);
 
@@ -61,7 +60,7 @@ public class CepMemoriaServiceTest {
     @Test
     public void testAtualizarPeloNumero() throws CepInvalidoException {
 
-        CepMemoriaService cepService = new CepMemoriaService();
+        CepMemoriaListService cepService = new CepMemoriaListService();
         Cep cep = new Cep(74915430, "test1", "test1", "teste1");
 
         cepService.cadastrar(cep);
@@ -87,7 +86,7 @@ public class CepMemoriaServiceTest {
     @Test
     public void testDelete() throws CepInvalidoException {
 
-        CepMemoriaService cepService = new CepMemoriaService();
+        CepMemoriaListService cepService = new CepMemoriaListService();
         Cep cep = new Cep(74915430, "test1", "test1", "teste1");
 
         cepService.cadastrar(cep);
