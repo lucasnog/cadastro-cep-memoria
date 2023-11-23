@@ -1,7 +1,8 @@
-package br.com.lucasnog.cadastrocep.service.implementation;
+package br.com.lucasnog.cadastrocep.service.impl;
 
 import br.com.lucasnog.cadastrocep.domain.Cep;
 import br.com.lucasnog.cadastrocep.exception.CepInvalidoException;
+import br.com.lucasnog.cadastrocep.service.ICepService;
 
 import java.util.Optional;
 

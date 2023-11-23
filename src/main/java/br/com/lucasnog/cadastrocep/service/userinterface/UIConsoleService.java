@@ -2,6 +2,7 @@ package br.com.lucasnog.cadastrocep.service.userinterface;
 
 import br.com.lucasnog.cadastrocep.domain.Cep;
 import br.com.lucasnog.cadastrocep.exception.CepInvalidoException;
+import br.com.lucasnog.cadastrocep.service.IUIService;
 
 import java.util.Scanner;
 

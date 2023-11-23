@@ -2,6 +2,8 @@ package br.com.lucasnog.cadastrocep.service.userinterface;
 
 import br.com.lucasnog.cadastrocep.domain.Cep;
 import br.com.lucasnog.cadastrocep.exception.CepInvalidoException;
+import br.com.lucasnog.cadastrocep.service.IUIService;
+
 import javax.swing.*;
 public class UIGraficService implements IUIService {
     Integer cepNumero;

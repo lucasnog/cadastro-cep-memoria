@@ -2,7 +2,7 @@ package br.com.lucasnog.cadastrocep.service;
 
 import br.com.lucasnog.cadastrocep.domain.Cep;
 import br.com.lucasnog.cadastrocep.exception.CepInvalidoException;
-import br.com.lucasnog.cadastrocep.service.implementation.CepMemoriaListLambdaService;
+import br.com.lucasnog.cadastrocep.service.impl.CepMemoriaListLambdaService;
 import org.junit.Test;
 
 import java.util.List;

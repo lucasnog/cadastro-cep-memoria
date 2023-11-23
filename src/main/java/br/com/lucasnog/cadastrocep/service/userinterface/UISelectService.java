@@ -1,5 +1,7 @@
 package br.com.lucasnog.cadastrocep.service.userinterface;
 
+import br.com.lucasnog.cadastrocep.service.IUIService;
+
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 

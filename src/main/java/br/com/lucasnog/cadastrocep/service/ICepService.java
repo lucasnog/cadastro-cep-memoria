@@ -1,4 +1,4 @@
-package br.com.lucasnog.cadastrocep.service.implementation;
+package br.com.lucasnog.cadastrocep.service;
 
 import br.com.lucasnog.cadastrocep.domain.Cep;
 import br.com.lucasnog.cadastrocep.exception.CepInvalidoException;

@@ -1,10 +1,10 @@
 package br.com.lucasnog.cadastrocep;
 
 import br.com.lucasnog.cadastrocep.exception.CepInvalidoException;
-import br.com.lucasnog.cadastrocep.service.implementation.ICepService;
-import br.com.lucasnog.cadastrocep.service.userinterface.IUIService;
+import br.com.lucasnog.cadastrocep.service.ICepService;
+import br.com.lucasnog.cadastrocep.service.IUIService;
 import br.com.lucasnog.cadastrocep.service.userinterface.UISelectService;
-import br.com.lucasnog.cadastrocep.service.implementation.CepMemoriaListLambdaService;
+import br.com.lucasnog.cadastrocep.service.impl.CepMemoriaListLambdaService;
 
 
 public class Main {
